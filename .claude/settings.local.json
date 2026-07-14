@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"ml-service /docs status: %{http_code}\\\\n\" http://127.0.0.1:8001/docs)",
+      "Bash(curl -s -o /tmp/overpass_test.json -w \"HTTP %{http_code}\\\\n\" -X POST \"https://overpass-api.de/api/interpreter\" -H \"Content-Type: text/plain\" --data '[out:json][timeout:25];\\(node[\"tourism\"=\"attraction\"]\\(around:6000,26.9124,75.7873\\);\\);out body 60;')",
+      "Read(//tmp/**)",
+      "Bash(curl -s -o /tmp/overpass_test2.json -w \"HTTP %{http_code}\\\\n\" -X POST \"https://overpass-api.de/api/interpreter\" -H \"Content-Type: text/plain\" -H \"User-Agent: Mozilla/5.0 \\(Traventure-Student-Project/1.0\\)\" -H \"Accept: */*\" --data '[out:json][timeout:25];\\(node[\"tourism\"=\"attraction\"]\\(around:6000,26.9124,75.7873\\);\\);out body 60;')",
+      "Bash(curl -s -o /tmp/o3.json -w \"HTTP %{http_code}\\\\n\" -G \"https://overpass-api.de/api/interpreter\" --data-urlencode 'data=[out:json][timeout:25];\\(node[\"tourism\"=\"attraction\"]\\(around:6000,26.9124,75.7873\\);\\);out body 60;')",
+      "Bash(curl -s -o /tmp/o4.json -w \"HTTP %{http_code}\\\\n\" -X POST \"https://overpass.kumi.systems/api/interpreter\" --data '[out:json][timeout:25];\\(node[\"tourism\"=\"attraction\"]\\(around:6000,26.9124,75.7873\\);\\);out body 60;')",
+      "Bash(curl -s http://localhost:5000/api/iconic-places)",
+      "Bash(time curl -s -w \"\\\\nHTTP %{http_code}\\\\n\" \"http://localhost:5000/api/places?city=Jaipur&interests=history,food\" -o /tmp/places_test.json)",
+      "Bash(curl -s -o /dev/null -w \"frontend status: %{http_code}\\\\n\" http://localhost:5174)"
+    ]
+  }
+}
